@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="420770584">
+    <data-source source="LOCAL" name="Rails Develop_Adverst: development" uuid="5817933f-700e-46b6-ac95-b19b95b48bc2">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/Develop_Adverst_development</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfd9dfcfdfc9dfd8dfcfdfde</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails Develop_Adverst: test" uuid="148c89f2-aa1d-4777-a38b-474634c36fb8">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:Develop_Adverst_test</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails Develop_Adverst: production" uuid="01e1bc6e-aed8-473a-ab91-8dc979788f85">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:Develop_Adverst_production</jdbc-url>
+      <user-name>Develop_Adverst</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfeedfefdffcdfefdfe6dfe5dffadff5dfebdfeedffcdfefdff8dff9dffedff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
