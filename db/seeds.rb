@@ -6,11 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-5.times do |i|
-  City.create(title: "City ##{i}")
+
+10.times do |i|
+  country = Country.create title: "Country ##{i+1}"
+  5.times do |y|
+    country.cities.create(title: "City #{y+1} in #{i+1} country")
+  end
 end
 
-5.times do |i|
-  Country.create(title: "Country ##{i}")
-end
+
+
 
