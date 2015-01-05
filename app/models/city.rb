@@ -1,6 +1,4 @@
 class City < ActiveRecord::Base
-  validates :title, presence: true
-
-  belongs_to :country
-
+  validates :title, :country, presence: true
+  belongs_to :country, inverse_of: :cities
 end
