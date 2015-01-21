@@ -1,0 +1,44 @@
+%section.middle.container
+  %ol.breadcrumb.col-lg-3.col-md-3.col-sm-3.col-xs-12
+    %li
+      %a{:href => "#"} Главная
+    %li.active Регистрация
+  .registration.col-lg-8.col-md-6.col-sm-8.col-xs-12.col-lg-offset-2.col-md-offset-3.col-sm-offset-2
+    = form_for(resource, as: resource_name, url: registration_path(resource_name),html: {class: "form-horizontal",role: 'form'}) do |f|
+      = devise_error_messages!
+      .form-group
+        = f.label :Логин, class: 'col-sm-2 control-label', for: 'login'
+        .col-sm-10
+          = f.text_field :login, autocomplete: "off",class: 'form-control', id: 'login', type: 'text' , placeholder: 'Логин'
+      .form-group
+        = f.label :ФИО, class: 'col-sm-2 control-label', for: 'fio'
+        .col-sm-10
+          = f.text_field :fio, autocomplete: "off",class: 'form-control', id: 'date', type: 'text' , placeholder: 'Ф.И.О'
+      .form-group
+        = f.label :'День рождения', class: 'col-sm-2 control-label', for: 'date'
+        .col-sm-10
+          = f.date_field :birhtday, autocomplete: "off",class: 'form-control', id: 'date', type: 'date' , placeholder: 'date'
+      .form-group
+        = f.label :Город, class: 'col-sm-2 control-label', for: 'search'
+        .col-sm-10
+          = f.search_field :city, autocomplete: "off",class: 'form-control', id: 'search', type: 'search' , placeholder: ''
+      .form-group
+        = f.label :email, class: 'col-sm-2 control-label', for: 'inputEmail'
+        .col-sm-10
+          = f.email_field :email, autofocus: true,class: 'form-control', type: 'email', id: 'inputEmail'
+      .form-group
+        = f.label :password, class: 'col-sm-2 control-label', for: 'inputPassword'
+        - if @validatable
+          %em
+            (#{@minimum_password_length} characters minimum)
+        %br/
+        .col-sm-10
+          = f.password_field :password, autocomplete: "off",class: 'form-control', id: 'inputPassword', type: 'password' , placeholder: 'Password'
+      .form-group
+        = f.label :password_confirmation, class: 'col-sm-2 control-label', for: 'inputPassword'
+        %br/
+        .col-sm-10
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', id: 'inputPassword', type: 'password',placeholder: 'Password'
+      .form-group
+        .reg-btn.col-sm-offset-2.col-sm-10
+          = f.submit "Зарегистрироватся", class: 'btn btn-info'
