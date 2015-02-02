@@ -1,0 +1,32 @@
+%section.middle.container
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"} Главная
+    %li.active Профиль
+  %h2.text-center Профиль
+  .profile.col-lg-6.col-md-6.col-sm-6.col-xs-12.col-lg-offset-3.col-md-offset-3.col-sm-offset-3
+    - if user_signed_in?
+      .update
+        = link_to('Редактировать', edit_user_registration_path)
+      %p
+        = t("user.login")
+        %span
+          = current_user.login
+      %p
+        = t("user.fio")
+        %span
+          = current_user.fio
+      %p
+        Email:
+        %span
+          = current_user.email
+      %p
+        Адрес:
+        %span
+          = current_user.city
+    .myAdverts
+      %h2 Мои обьявления
+      %a{:href => "#"} Объявление 1
+      %a{:href => "#"} Объявление 2
+      %a{:href => "#"} Объявление 3
+      %a{:href => "#"} Объявление 4
