@@ -1,8 +1,5 @@
 %section.middle.container
-  %ol.breadcrumb.col-lg-3.col-md-3.col-sm-3.col-xs-12
-    %li
-      %a{:href => "#"} Главная
-    %li.active Вход
+  = render partial: "devise/shared/breadcrumb", locals: {breadcrumb:  { "http://localhost:3000/" => "Главная", "http://localhost:3000/users/sign_in" => "Вход" }}
   .sign-in.col-lg-6.col-md-6.col-sm-8.col-xs-12.col-lg-offset-3.col-md-offset-3.col-sm-offset-2
     = form_for(resource, as: resource_name, url: session_path(resource_name),html: {class: "form-horizontal",role: 'form'}) do |f|
       .form-group

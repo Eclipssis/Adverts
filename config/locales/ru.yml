@@ -71,13 +71,16 @@ ru:
 
   activerecord:
       models:
-        user: Юзер
+        user:
+          one: Юзер
+          other: Юзеры
         city: Город
         country: Страна
       attributes:
         user:
           login: "Логин"
           password: "Пароль"
+          password_confirmation: "Подтверждение пароля"
           birhtday: "День Рождения"
           fio: "ФИО"
           city: "Город"
@@ -90,10 +93,10 @@ ru:
           user:
             attributes:
               password_confirmation:
-                confirmation: "подтвердите пароль"
+                confirmation: "пароли не совпадают"
                 blank: "не может быть пустым"
               password:
-                confirmation: "подтвердите пароль"
+                confirmation: " пароли не совпадают"
                 blank:  "не может быть пустым"
                 too_short: "слишком короткий"
               login:

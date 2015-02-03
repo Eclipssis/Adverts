@@ -1,0 +1,9 @@
+%ol.breadcrumb.col-lg-3.col-md-3.col-sm-3.col-xs-12
+  - breadcrumb.each_with_index do |(href,title), index|
+    - unless breadcrumb.size - 1 == index
+      %li
+        %a{:href => "#{href}"} #{title}
+    - else
+      %li.active #{title}
+
+
