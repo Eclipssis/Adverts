@@ -8,7 +8,7 @@ RSpec.describe Country, :type => :model do
 
     subject { Country.create title: 'first country' }
 
-    it 'should be tit;e present' do
+    it 'should be title present' do
       expect(subject.title?).to be true
     end
 

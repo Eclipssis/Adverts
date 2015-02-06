@@ -1,13 +1,13 @@
 %section.middle.container
-  = render partial: "devise/shared/breadcrumb", locals: {breadcrumb:  { "http://localhost:3000/" => "Главная", "http://localhost:3000/users/sign_in" => "Вход" }}
+  = render partial: "shared/breadcrumb", locals: {breadcrumb:  { "http://localhost:3000/" => "Главная", "http://localhost:3000/users/sign_in" => "Вход" }}
   .sign-in.col-lg-6.col-md-6.col-sm-8.col-xs-12.col-lg-offset-3.col-md-offset-3.col-sm-offset-2
     = form_for(resource, as: resource_name, url: session_path(resource_name),html: {class: "form-horizontal",role: 'form'}) do |f|
       .form-group
-        %label.col-sm-2.control-label{:for => "inputEmail3"} Email
+        %label.col-sm-2.control-label{:for => "inputEmail3"}=t('activerecord.attributes.user.email')
         .col-sm-10
           = f.email_field :email, autofocus: true,class: 'form-control', id: 'inputEmail3', placeholder: 'Email'
       .form-group
-        %label.col-sm-2.control-label{:for => "inputPassword3"} Пароль
+        %label.col-sm-2.control-label{:for => "inputPassword3"}=t('activerecord.attributes.user.password')
         .col-sm-10
           = f.password_field :password, autocomplete: "off", class: 'form-control', plaseholder: 'Password', type: 'password'
       .form-group
@@ -15,10 +15,10 @@
           .checkbox
           - if devise_mapping.rememberable?
             = f.check_box :remember_me
-            = f.label :remember_me
+            = f.label t('devise.sessions.remember_me')
       .form-group
         .col-sm-offset-2.col-sm-10
-          = f.submit :Войти
+          = f.submit t('buttons.enter'), class: 'btn btn-info'
       .form-group
         .col-sm-offset-2.col-sm-10
           = render "devise/shared/links"

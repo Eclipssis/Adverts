@@ -31,11 +31,11 @@ ActiveRecord::Schema.define(version: 20150120202548) do
 
   create_table "users", force: true do |t|
     t.string   "city"
-    t.string   "counrty"
+    t.string   "country"
     t.string   "login"
     t.string   "avatar"
     t.string   "fio"
-    t.string   "birhtday"
+    t.string   "birthday"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(version: 20150120202548) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
