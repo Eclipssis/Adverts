@@ -220,18 +220,23 @@ body{
 }
 
 .flash{
-  padding-left: 30px;
+  margin-left: 20px;
   font-weight: bold;
   font: 18px Calirbri;
 }
 
 .alert{
   color: #ba0000;
+  background: rgb(255, 139, 147);
+  border: 1px solid rgb(255, 102, 104);
 }
 
 .notice{
+  padding: 15px;
+  border-radius: 4px;
   color: #2e5bff;
-
+  background: rgb(158, 182, 255);
+  border: 1px solid rgb(99, 125, 255);
 }
 
 .password{
