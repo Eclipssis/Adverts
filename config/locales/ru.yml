@@ -1,6 +1,7 @@
 ru:
   buttons:
     registration: "Регистрация"
+    enter: "Войти"
 
   layouts:
     application:
@@ -8,9 +9,45 @@ ru:
       users: "Пользователи"
       add_advert: "Добавить обьявление"
       sent: "Отправить"
-      another_action: "Другое действие"
       something_else: "Что то еще"
       go_out: "Выйти"
+      edit: "Редактировать"
+      profile: "Профиль"
+      enter: "Вход"
+      registration: "Регистрация"
+
+  devise:
+    passwords:
+      new:
+        fogot_password?: "Забыли пароль?"
+        send_me_reset_password_instructions: "Отправить инструкии востановления пароля"
+    registrations:
+      edit:
+        edit: "Редактировать"
+        update: "Редактирвать"
+        cancel_my_account: "Удалить аккаунт"
+        back: "Назад"
+        are_you_sure: "Вы уверены?"
+        leave_blank_if_you_dont_want_to_change_it: "(оставтье поле пустым, если не хотите его редактировать)"
+        we_need_your_current_password_to_confirm_your_changes: "(подтвердите текущий пароль для подтверждения изменений)"
+
+    shared:
+      _links:
+        log_in: "Вход"
+        sign_up: "Регистрация"
+        forgot_your_password?: "Забыли пароль?"
+        didn't_receive_confirmation_instructions?: "Не получили письмо с подтверждением?"
+        didn't_receive_unlock_instructions?: "Не получили инструкции разблокировки?"
+
+  home:
+    index:
+      adverts: "Обьявления"
+
+  user:
+    show:
+      profile: "Профиль"
+      my_adverts: "Мои обьявления"
+
 
   activerecord:
       models:
@@ -25,8 +62,9 @@ ru:
       attributes:
         user:
           login: "Логин"
-          email: "email"
+          email: "Email"
           password: "Пароль"
+          current_password: "Текущий пароль"
           password_confirmation: "Подтверждение пароля"
           birhtday: "День Рождения"
           fio: "ФИО"
@@ -39,6 +77,9 @@ ru:
         models:
           user:
             attributes:
+              current_password:
+                invalid: "не верный"
+                blank: "не может быть пустым"
               password_confirmation:
                 confirmation: "пароли не совпадают"
                 blank: "не может быть пустым"

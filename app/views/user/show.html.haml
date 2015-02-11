@@ -1,29 +1,32 @@
 %section.middle.container
   = render partial: "shared/breadcrumb", locals: {breadcrumb:  { "http://localhost:3000/" => "Главная", "http://localhost:3000/profile" => "Профиль" }}
-  %h2.text-center Профиль
+  %h2.text-center= t('.profile')
   .profile.col-lg-6.col-md-6.col-sm-6.col-xs-12.col-lg-offset-3.col-md-offset-3.col-sm-offset-3
     - if user_signed_in?
       .update
-        = link_to('Редактировать', edit_user_registration_path)
       %p
-        = t("user.login")
+        = t("activerecord.attributes.user.login")
         %span
           = current_user.login
       %p
-        = t("user.fio")
+        = t("activerecord.attributes.user.fio")
         %span
           = current_user.fio
       %p
-        Email:
+        = t("activerecord.attributes.user.email")
         %span
           = current_user.email
       %p
-        Адрес:
+        = t("activerecord.attributes.user.birhtday")
+        %span
+          = current_user.birhtday
+      %p
+        = t("activerecord.models.city.one")
         %span
           = current_user.city
-    .myAdverts
-      %h2 Мои обьявления
-      %a{:href => "#"} Объявление 1
-      %a{:href => "#"} Объявление 2
-      %a{:href => "#"} Объявление 3
-      %a{:href => "#"} Объявление 4
+  .myAdverts
+    %h2= t('.my_adverts')
+    %a{:href => "#"} Объявление 1
+    %a{:href => "#"} Объявление 2
+    %a{:href => "#"} Объявление 3
+    %a{:href => "#"} Объявление 4
