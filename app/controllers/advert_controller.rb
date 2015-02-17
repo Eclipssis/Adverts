@@ -6,11 +6,11 @@ class AdvertController < ApplicationController
   end
 
   def new
-    @advert = Advert.new
+    @advert = current_user.adverts.new()
   end
 
   def create
-    @advert = Advert.create(advert_params)
+    @advert = current_user.adverts.create(advert_params)
     if @advert.save
       redirect_to @advert
     else
@@ -24,8 +24,12 @@ class AdvertController < ApplicationController
 
   def update
     @advert = Advert.find(params[:id])
-    @advert.update(advert_params)
-    redirect_to @advert
+    if @advert.save
+      @advert.update(advert_params)
+      redirect_to @advert
+    else
+      render 'advert/edit'
+    end
   end
 
   def show

@@ -8,7 +8,7 @@
         .advert
           %img.pull-left{:src => "http://cs617322.vk.me/v617322811/1eed3/6g2xFxD0fdU.jpg"}
           = link_to( advert.title, advert_path(advert), class: 'title')
-          %p.description= advert.text
+          %p.description= truncate(advert.text, :length => 110)
 
   %ul.pagination.clearfix
     %li.disabled

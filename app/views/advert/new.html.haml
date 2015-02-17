@@ -3,6 +3,7 @@
     %h2.text-center Добавить Объявление
     = form_for @advert, url: {action: "create"},html: {class: "form-horizontal",role: 'form'} do |f|
       =advert_error_messages!
+      %p= @a
       .form-group
         = f.label :title, class: 'col-sm-2 control-label', for: 'title'
         .col-sm-10

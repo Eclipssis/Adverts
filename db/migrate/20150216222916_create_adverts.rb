@@ -1,6 +1,7 @@
 class CreateAdverts < ActiveRecord::Migration
   def change
     create_table :adverts do |t|
+      t.string :user_id
       t.string :title
       t.string :author
       t.string :image
