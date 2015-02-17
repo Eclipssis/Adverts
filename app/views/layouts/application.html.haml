@@ -22,7 +22,7 @@
                 %a{:href => "#"}=t('.main')
               %li
                 %a{:href => "#"}=t('.users')
-            %button.btn.btn-info.navbar-btn{:type => "button"}=t('.add_advert')
+            = link_to(t('.add_advert'), new_advert_path, class: 'button btn btn-info navbar-btn')
             %form.navbar-form.navbar-left{:role => "search"}
               .form-group
                 %input.form-control.input-sm{:placeholder => "Search", :type => "text"}

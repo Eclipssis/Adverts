@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  resources :advert, controller: 'advert'
 
   get 'profile', to: 'user#show', as: 'user_profile'
 
