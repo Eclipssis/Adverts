@@ -26,7 +26,5 @@
           = current_user.city
   .myAdverts
     %h2= t('.my_adverts')
-    %a{:href => "#"} Объявление 1
-    %a{:href => "#"} Объявление 2
-    %a{:href => "#"} Объявление 3
-    %a{:href => "#"} Объявление 4
+    - current_user.adverts.map do |advert|
+      = link_to( advert.title, advert_path(advert))

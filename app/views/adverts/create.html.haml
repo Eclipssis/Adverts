@@ -1,0 +1,33 @@
+%section.middle.container
+  = render partial: "shared/breadcrumb", locals: {breadcrumb:  { "http://localhost:3000/" => "Главная", "http://localhost:3000/advert" => "Заголовок обьявления" }}
+  .page-header
+    %h1.text-center
+      =@advert.title
+  .notice-profile.col-lg-3.col-md-2.col-sm-12.col-xs-12
+    %img{:src => "http://prettynews.ru/wp-content/uploads/2012/04/Vesna-150x150.jpg"}
+    %p.date-publication
+      Дата публикации:
+      %span= @advert.created_at.strftime("%d %b. %Y")
+    %p.author
+      Автор:
+      %span= @uesr_fio
+    - if current_user.id.to_i == @advert.user_id.to_i # TODO t.string :user_id fix!, current_user ?
+      = link_to('Редактировать', edit_advert_path(@advert))
+      = link_to('Удалить', advert_path(@advert.id), method: :delete, data: {confirm: 'Точно удалить?'})
+  .col-lg-8.col-md-8.col-sm-12.col-xs-12
+    %p= @advert.text
+    %p.comments-title Коментарии
+    - @advert.comments.map do |comment|
+      .comment.clearfix{ "data-comment-id" => comment.id}
+        %p.comment-author.pull-left
+          = User.find(comment.user_id).login # TODO как с ЭТИМ быть ?
+          %span :
+        %p= comment.text
+        - if current_user.id == comment.user_id # TODO current_user ?
+          %span{class: 'delete-comment pull-right' } Удалить
+          %span{class: 'edit-comment pull-right' } Редактировать
+    %h3 Добавить коментарий
+    = form_for @advert.comments.build, html: {class: "form-horizontal",role: 'form'} do |f|
+      = f.hidden_field :advert_id
+      = f.text_area :text, autocomplete: "off",class: 'form-control yout-comment', type: 'text' , rows: '3'
+      = f.submit 'Добавить', class: 'btn btn-info pull-right'
