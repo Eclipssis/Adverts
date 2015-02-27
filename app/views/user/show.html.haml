@@ -24,7 +24,7 @@
         = t("activerecord.models.city.one")
         %span
           = current_user.city
-  .myAdverts
+  .myAdverts.col-lg-12.col-md-12.col-sm-12.col-xs-12
     %h2= t('.my_adverts')
     - current_user.adverts.map do |advert|
       = link_to( advert.title, advert_path(advert))

@@ -1,0 +1,8 @@
+$("<%= escape_javascript(render(:partial => "comments/update_comment",locals: { comment: @update_comment}))%>").appendTo("#comment_id_<%= @update_comment.id %> ");
+$("#comment_id_<%= @update_comment.id %> ").find(".comment-text").hide();
+$("#comment_id_<%= @update_comment.id %> a").hide();
+
+
+$(".up").click(function(){
+    $("#comment_id_<%= @update_comment.id %> ").hide();
+});

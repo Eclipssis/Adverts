@@ -48,6 +48,7 @@ div.wraper{
   }
   textarea.form-control{
     max-width: 100%;
+    resize: none;
   }
   .myAdverts{
     margin-left: 20px;
@@ -56,7 +57,15 @@ div.wraper{
     }
     a{
       display: block;
-      padding: 4px 0px;
+      margin: 4px 0px;
+      color: #050812;
+      text-decoration: none;
+      padding-left: 5px;
+      font-size: 20px;
+    }
+    a:hover{
+      border-left: 4px solid #050812;
+      margin-left: -3.6px;
     }
   }
   .breadcrumb{
@@ -141,25 +150,25 @@ div.wraper{
       margin: 5px;
     }
     .edit-comment, .delete-comment{
-      color: #337ab7;
       cursor: pointer;
-      margin: 0 5px;
     }
-    .edit-comment:hover, .delete-comment:hover{
-      text-decoration: underline;
-    }
+
     .comment-author{
       font-style: italic;
       font-size: 12px;
       width: 100%;
     }
+    textarea{
+      margin-bottom: 10px;
+      width: 100%;
+      max-width: 100%;
+      resize: none;
+      height: 60px;
+      max-height: 100%;
+    }
   }
 
   .notice-profile{
-    a{
-      padding: 5px 10px 5px 0;
-      text-align: right;
-    }
     span{
       float: right;
       margin-right: 30px;
@@ -270,3 +279,4 @@ textarea.form-control{
   max-height: 150px;
   max-width: 628px;
 }
+.block{display: block}
