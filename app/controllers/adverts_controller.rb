@@ -1,26 +1,20 @@
 class AdvertsController < ApplicationController
 
-    def index
-      @all_adverts = Advert.all
-      render "home/index"
-    end
-
     def new
       if user_signed_in?
         @advert = current_user.adverts.build
       else
         flash[:alert] = 'Вы не вошли в систему'
-        redirect_to action: 'index'
+        redirect_to root_url
       end
     end
 
     def create
       @advert = current_user.adverts.create(advert_params)
       if @advert.save
-
-        redirect_to @advert
+        render 'notice'
       else
-        render 'adverts/new'
+        render 'new'
       end
     end
 
@@ -30,24 +24,22 @@ class AdvertsController < ApplicationController
 
     def update
       @advert = Advert.find(params[:id])
-      if @advert.save
-        @advert.update(advert_params)
+      if @advert.update_attributes(advert_params)
         redirect_to @advert
       else
-        render 'adverts/edit'
+        render 'edit'
       end
     end
 
     def show
       @advert = Advert.find(params[:id])
-      @uesr_fio = User.find(@advert.user_id).fio
-      render 'adverts/create'
+      render 'notice'
     end
 
     def destroy
       @advert = Advert.find(params[:id])
       @advert.destroy
-      redirect_to action: 'index'
+      redirect_to root_url
     end
 
     private

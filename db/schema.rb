@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150217215103) do
   enable_extension "plpgsql"
 
   create_table "adverts", force: true do |t|
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "title"
     t.string   "author"
     t.string   "image"

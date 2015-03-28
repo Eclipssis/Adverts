@@ -1,18 +1,17 @@
 class CommentsController < ApplicationController
 
-  def index
-
-  end
-
-  def new
-
-  end
-
   def create
     @comment = current_user.comments.create(comment_params)
-    respond_to do |format|
-      format.html { redirect_to @advert_comment, notice: 'User was successfully created.' }
-      format.js{}
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to @comment, notice: 'User was successfully created.' }
+        format.js{}
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @comment, notice: 'User was successfully created.' }
+        format.js{ render partial: "comments/comment_error" , locals: { comment: @comment } }
+      end
     end
   end
 
@@ -22,22 +21,24 @@ class CommentsController < ApplicationController
 
   def update
     @update_comment = Comment.find(params[:id])
-    @update_comment.update(comment_params)
-    respond_to do |format|
-      format.html { redirect_to @comment, notice: 'User was successfully update.' }
-      format.js{}
+    if @update_comment.update_attributes(comment_update_params)
+      respond_to do |format|
+        format.html { redirect_to @update_comment, notice: 'User was successfully update.' }
+        format.js{}
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @update_comment, notice: 'User was successfully created.' }
+        format.js{ render partial: "comments/comment_update_error" , locals: { update_comment: @update_comment } }
+      end
     end
-  end
-
-  def show
-
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @advert_comment, notice: 'User was successfully created.' }
+      format.html { redirect_to @comment, notice: 'User was successfully created.' }
       format.js{}
     end
   end

@@ -118,3 +118,7 @@ ru:
                 blank: "не может быть пустым"
               user_id:
                 blank: "не может быть пустым"
+          comment:
+            attributes:
+              text:
+                blank: "не может быть пустым"

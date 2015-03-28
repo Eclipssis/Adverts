@@ -23,11 +23,3 @@
 jQuery( function($) {
 
 });
-
-$(".up").click(function () {
-   alert("sdfsdfs");
-});
-
-
-
-

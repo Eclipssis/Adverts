@@ -2,7 +2,7 @@
   = render partial: "shared/breadcrumb", locals: {breadcrumb:  { "http://localhost:3000/" => "Главная", "http://localhost:3000/advert" => "Заголовок обьявления" }}
   .page-header
     %h1.text-center
-      =@advert.title
+      = @advert.title
   .notice-profile.col-lg-3.col-md-2.col-sm-12.col-xs-12
     %img{:src => "http://prettynews.ru/wp-content/uploads/2012/04/Vesna-150x150.jpg"}
     %p.date-publication
@@ -11,17 +11,16 @@
     %p.author
       Автор:
       %span= @uesr_fio
-    - if current_user.id.to_i == @advert.user_id.to_i # TODO t.string :user_id fix! current_user ?
+    - if current_user.id== @advert.user_id # TODO t.string :user_id fix! current_user ?
       = link_to('Редактировать', edit_advert_path(@advert),class: "btn btn-info")
       = link_to('Удалить', advert_path(@advert.id), method: :delete, data: {confirm: 'Точно удалить?'},class: "btn btn-danger")
   .col-lg-8.col-md-8.col-sm-12.col-xs-12
     .comments
       %p= @advert.text
       %p.comments-title Коментарии
-      - @advert.comments.map do |comment|
-        = render partial: "comments/comment", locals: {comment: comment}
+      = render @advert.comments
     %h3 Добавить коментарий
-    = form_for @advert.comments.build, remote: true, html: {class: "form-horizontal",role: 'form'} do |f|
+    = form_for @advert.comments.build, remote: true, html: {class: "form-horizontal",role: 'form', autocomplete: "off"} do |f|
       = f.hidden_field :advert_id
       = f.text_area :text, autocomplete: "off",class: 'form-control yout-comment', type: 'text' , rows: '3', data: "#{current_user.login}"
       = f.submit 'Добавить', class: 'btn btn-default pull-right'

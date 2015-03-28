@@ -1,8 +1,12 @@
-$("<%= escape_javascript(render(:partial => "comments/update_comment",locals: { comment: @update_comment}))%>").appendTo("#comment_id_<%= @update_comment.id %> ");
-$("#comment_id_<%= @update_comment.id %> ").find(".comment-text").hide();
-$("#comment_id_<%= @update_comment.id %> a").hide();
+var a = $("<%= j(render(:partial => "comments/update_comment",locals: { comment: @update_comment}))%>").appendTo("#comment_id_<%= @update_comment.id %> ");
+$("#comment_id_<%= @update_comment.id %> ").find(".comment-text").remove();
+$("#comment_id_<%= @update_comment.id %> a").remove();
+
 
 
 $(".up").click(function(){
+    console.log( $("#comment_id_<%= @update_comment.id %> textarea").val() );
+    if ($("#comment_id_<%= @update_comment.id %> textarea").val() != "")
     $("#comment_id_<%= @update_comment.id %> ").hide();
 });
+

@@ -1,6 +1,6 @@
 .comment.clearfix{ id: "comment_id_#{comment.id}" }
   %p.comment-author.pull-left
-    = User.find(comment.user_id).login # TODO как с ЭТИМ быть ?
+    = comment.user.login
     %span :
   %p.comment-text= comment.text
   - if current_user.id == comment.user_id # TODO current_user ?

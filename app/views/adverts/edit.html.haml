@@ -1,16 +1,4 @@
 %section.container
   .password.col-lg-8.col-md-6.col-sm-8.col-xs-12.col-lg-offset-2.col-md-offset-3.col-sm-offset-2
     %h2.text-center Редактировать Объявление
-    = form_for @advert, url: {action: "update"}, html: {class: "form-horizontal",role: 'form' } do |f|
-      =advert_error_messages!
-      .form-group
-        = f.label :title, class: 'col-sm-2 control-label', for: 'title'
-        .col-sm-10
-          = f.text_field :title, autocomplete: "off",class: 'form-control', id: 'title', type: 'text' , placeholder: 'Title'
-      .form-group
-        = f.label :text, class: 'col-sm-2 control-label', for: 'text'
-        .col-sm-10
-          = f.text_area :text, autocomplete: "off",class: 'form-control', id: 'text', type: 'text' , placeholder: 'Text'
-      .form-group
-        .reg-btn.col-sm-offset-2.col-sm-10
-          = f.submit 'Редактировать', class: 'btn btn-info'
+    = render partial: "adverts/advert_form",  locals: { advert: @advert , btn_name: 'Редактировать'}

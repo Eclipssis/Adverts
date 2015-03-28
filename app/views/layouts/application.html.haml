@@ -19,9 +19,9 @@
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
             %ul.nav.navbar-nav
               %li.active
-                %a{:href => "#"}=t('.main')
+                %a{:href => "#"}= t('.main')
               %li
-                %a{:href => "#"}=t('.users')
+                %a{:href => "#"}= t('.users')
             = link_to(t('.add_advert'), new_advert_path, class: 'button btn btn-info navbar-btn')
             %form.navbar-form.navbar-left{:role => "search"}
               .form-group
@@ -44,7 +44,7 @@
                     %li
                       = link_to(t('.edit'), edit_user_registration_path )
                     %li
-                      %a{:href => "#"}=t('.something_else')
+                      %a{:href => "#"}= t('.something_else')
                     %li.divider
                     %li
                       = link_to(t('.go_out'), destroy_user_session_path, :method => :delete)
@@ -52,6 +52,6 @@
         - flash.each do |name, msg|
           = content_tag :div, msg, class: name
       = yield
-      %p=params[:current_user]
+      %p= params[:current_user]
     %footer.footer.container.fixed-bottom
       %p.text-center Footer

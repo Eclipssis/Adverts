@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :adverts
-  resources :comments
+  resources :adverts, only: [:new, :create, :edit, :update, :destroy, :show]
+  resources :comments, only: [:create, :edit, :update, :destroy]
 
   get 'profile', to: 'user#show', as: 'user_profile'
 
