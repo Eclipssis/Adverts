@@ -14,7 +14,11 @@
   end
 end
 
-user = User.new(
+Role.create(name: "admin")
+Role.create(name: "moderator")
+Role.create(name: "user")
+
+user = User.create(
     fio:                   "Some FIO",
     login:                 "Eclipssis",
     birthday:              "10.12.1992",

@@ -5,7 +5,16 @@ Rails.application.routes.draw do
   resources :adverts, only: [:new, :create, :edit, :update, :destroy, :show]
   resources :comments, only: [:create, :edit, :update, :destroy]
 
-  get 'profile', to: 'user#show', as: 'user_profile'
+  # resources :roles
+  get '/profile/:id', to: 'user#show', as: 'user_profile'
+
+
+  namespace :admin do
+    post  'roles',to: 'users#change', as: 'change_role'
+    get 'users', to: 'users#index', as: 'users'
+  end
+  get 'countries/autocomplete', to: 'countries#get_country'
+  get '/cities/:id/autocomplete', to: 'cities#get_city'
 
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.

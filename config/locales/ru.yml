@@ -69,6 +69,7 @@ ru:
           birthday: "День Рождения"
           fio: "ФИО"
           city: "Город"
+          country: "Страна"
         city:
           title: "Название"
         country:
@@ -97,6 +98,8 @@ ru:
                 too_short: "слишком короткий"
                 invalid: "не коректный"
               city:
+                blank:  "не может быть пустым"
+              country:
                 blank:  "не может быть пустым"
               fio:
                 blank:  "не может быть пустым"

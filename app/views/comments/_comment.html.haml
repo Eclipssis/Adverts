@@ -3,6 +3,7 @@
     = comment.user.login
     %span :
   %p.comment-text= comment.text
-  - if current_user.id == comment.user_id # TODO current_user ?
+  - if can? :update, comment
     = link_to('Редактировать', edit_comment_path(comment), class: 'pull-right', remote: true)
+  - if can? :destroy, comment
     = link_to('Удалить', comment, class: 'delete-comment pull-right', method: :delete, remote: true)

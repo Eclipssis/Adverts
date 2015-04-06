@@ -20,6 +20,25 @@
 
 //= require_tree .
 
-jQuery( function($) {
+
+$( document ).ready(function() {
+
+    $("#country").autocomplete({
+        source: '/countries/autocomplete',
+        minLength: 2,
+        select: function( event, ui ) {
+            $("#city-field").fadeIn(200);
+            $("#city").autocomplete({
+                source: '/cities/' + ui.item.country_id + '/autocomplete'
+            });
+            console.log(event);
+            console.log(ui.item.label);
+            console.log(ui.item.value);
+        }
+    });
+
+
 
 });
+
+

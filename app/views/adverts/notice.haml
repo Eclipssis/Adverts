@@ -7,12 +7,13 @@
     %img{:src => "http://prettynews.ru/wp-content/uploads/2012/04/Vesna-150x150.jpg"}
     %p.date-publication
       Дата публикации:
-      %span= @advert.created_at.strftime("%d %b. %Y")
+      %span= @advert.created_at.strftime("%d %b. %Y") #TODO Переделать в нормальный формат i18n
     %p.author
       Автор:
-      %span= @uesr_fio
-    - if current_user.id== @advert.user_id # TODO t.string :user_id fix! current_user ?
+      %span= @advert.user.fio
+    - if can? :update, @advert
       = link_to('Редактировать', edit_advert_path(@advert),class: "btn btn-info")
+    - if can? :destroy, @advert
       = link_to('Удалить', advert_path(@advert.id), method: :delete, data: {confirm: 'Точно удалить?'},class: "btn btn-danger")
   .col-lg-8.col-md-8.col-sm-12.col-xs-12
     .comments
@@ -22,5 +23,5 @@
     %h3 Добавить коментарий
     = form_for @advert.comments.build, remote: true, html: {class: "form-horizontal",role: 'form', autocomplete: "off"} do |f|
       = f.hidden_field :advert_id
-      = f.text_area :text, autocomplete: "off",class: 'form-control yout-comment', type: 'text' , rows: '3', data: "#{current_user.login}"
+      = f.text_area :text, autocomplete: "off",class: 'form-control yout-comment', type: 'text' , rows: '3'
       = f.submit 'Добавить', class: 'btn btn-default pull-right'

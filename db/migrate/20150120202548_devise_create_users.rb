@@ -8,6 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :avatar
       t.string :fio
       t.string :birthday
+      t.integer :role_id
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

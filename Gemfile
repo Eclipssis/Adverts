@@ -39,6 +39,9 @@ group :test do
 end
 
 gem 'devise'
+gem "cancan"
+
+gem 'kaminari'
 
 gem 'jquery-ui-rails'
 

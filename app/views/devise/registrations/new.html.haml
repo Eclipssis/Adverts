@@ -16,20 +16,24 @@
         .col-sm-10
           = f.date_field :birthday, autocomplete: "off",class: 'form-control', id: 'date', type: 'date' , placeholder: 'date'
       .form-group
-        = f.label :city, class: 'col-sm-2 control-label', for: 'search'
+        = f.label :country, class: 'col-sm-2 control-label', for: 'country'
         .col-sm-10
-          = f.search_field :city, autocomplete: "off",class: 'form-control', id: 'search', type: 'search' , placeholder: ''
+          = f.text_field :country, autocomplete: "off",class: 'form-control', id: 'country', type: 'text'
+      .form-group{id: "city-field"}
+        = f.label :city, class: 'col-sm-2 control-label', for: 'city'
+        .col-sm-10
+          = f.text_field :city, autocomplete: "off",class: 'form-control', id: 'city', type: 'text'
       .form-group
         = f.label :email, class: 'col-sm-2 control-label', for: 'inputEmail'
         .col-sm-10
           = f.email_field :email, autofocus: true,class: 'form-control', type: 'email', id: 'inputEmail'
       .form-group
         = f.label :password, class: 'col-sm-2 control-label', for: 'inputPassword'
-        - if @validatable
-          %em
-            (#{@minimum_password_length} characters minimum)
-        %br/
         .col-sm-10
+          - if @validatable
+            %em
+              (#{@minimum_password_length} characters minimum)
+          %br/
           = f.password_field :password, autocomplete: "off",class: 'form-control', id: 'inputPassword', type: 'password' , placeholder: t("activerecord.attributes.user.password")
       .form-group
         = f.label :password_confirmation, class: 'col-sm-2 control-label', for: 'inputPassword'
@@ -39,3 +43,4 @@
       .form-group
         .reg-btn.col-sm-offset-2.col-sm-10
           = f.submit t("buttons.registration"), class: 'btn btn-info'
+

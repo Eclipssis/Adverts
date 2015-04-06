@@ -19,14 +19,19 @@
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
             %ul.nav.navbar-nav
               %li.active
-                %a{:href => "#"}= t('.main')
+                = link_to(t('.main'), root_url)
               %li
-                %a{:href => "#"}= t('.users')
+                - if current_user.try(:role).try(:name) == 'admin' # TODO Переделать в CanCan
+                  = link_to(t('.users'), admin_users_path)
+                - else
+                  %li.width
             = link_to(t('.add_advert'), new_advert_path, class: 'button btn btn-info navbar-btn')
             %form.navbar-form.navbar-left{:role => "search"}
               .form-group
-                %input.form-control.input-sm{:placeholder => "Search", :type => "text"}
-              %button.btn.btn-sm{:type => "submit"}=t('.sent')
+                = form_for( User.new , url: admin_change_role_path, html: { method: :post } ) do |f|
+                  = f.text_field :id , placeholder: "Search" , class: 'form-control input-sm'
+                  = f.select :role_id, ['Автор','еще что то'], {}, { class: 'form-control input-sm' }
+                  = f.submit t('.sent'), class: 'btn btn-sm btn-default'
             %ul.nav.navbar-nav.navbar-right
               - unless user_signed_in?
                 %li
@@ -40,7 +45,7 @@
                     %b.caret
                   %ul.dropdown-menu
                     %li
-                      = link_to(t('.profile'), user_profile_path )
+                      = link_to(t('.profile'), user_profile_path(current_user.id) )
                     %li
                       = link_to(t('.edit'), edit_user_registration_path )
                     %li
@@ -52,6 +57,5 @@
         - flash.each do |name, msg|
           = content_tag :div, msg, class: name
       = yield
-      %p= params[:current_user]
     %footer.footer.container.fixed-bottom
       %p.text-center Footer

@@ -2,29 +2,32 @@
   = render partial: "shared/breadcrumb", locals: {breadcrumb:  { "http://localhost:3000/" => "Главная", "http://localhost:3000/profile" => "Профиль" }}
   %h2.text-center= t('.profile')
   .profile.col-lg-6.col-md-6.col-sm-6.col-xs-12.col-lg-offset-3.col-md-offset-3.col-sm-offset-3
-    - if user_signed_in?
-      .update
-      %p
-        = t("activerecord.attributes.user.login")
-        %span
-          = current_user.login
-      %p
-        = t("activerecord.attributes.user.fio")
-        %span
-          = current_user.fio
-      %p
-        = t("activerecord.attributes.user.email")
-        %span
-          = current_user.email
-      %p
-        = t("activerecord.attributes.user.birthday")
-        %span
-          = current_user.birthday
-      %p
-        = t("activerecord.models.city.one")
-        %span
-          = current_user.city
+    .update
+    %p
+      = t("activerecord.attributes.user.login")
+      %span
+        = @user.login
+    %p
+      = t("activerecord.attributes.user.fio")
+      %span
+        = @user.fio
+    %p
+      = t("activerecord.attributes.user.email")
+      %span
+        = @user.email
+    %p
+      = t("activerecord.attributes.user.birthday")
+      %span
+        = @user.birthday
+    %p
+      = t("activerecord.models.city.one")
+      %span
+        = @user.city
+    %p
+      = t("activerecord.models.country")
+      %span
+        = @user.country
   .myAdverts.col-lg-12.col-md-12.col-sm-12.col-xs-12
     %h2= t('.my_adverts')
-    - current_user.adverts.each do |advert|
+    - @user.adverts.each do |advert|
       = link_to( advert.title, advert_path(advert))
