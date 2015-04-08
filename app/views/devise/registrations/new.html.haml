@@ -1,7 +1,7 @@
 %section.middle.container
   = render partial: "shared/breadcrumb", locals: {breadcrumb:  { "http://localhost:3000/" => "Главная", "http://localhost:3000/users/sign_up" => "Регистрация" }}
   .registration.col-lg-8.col-md-6.col-sm-8.col-xs-12.col-lg-offset-2.col-md-offset-3.col-sm-offset-2
-    = form_for(resource, as: resource_name, url: registration_path(resource_name),html: {class: "form-horizontal",role: 'form'}) do |f|
+    = form_for(resource, as: resource_name, url: registration_path(resource_name),html: {class: "form-horizontal",role: 'form', multipart: true}) do |f|
       = devise_error_messages!
       .form-group
         = f.label :login, class: 'col-sm-2 control-label', for: 'login'
@@ -27,6 +27,11 @@
         = f.label :email, class: 'col-sm-2 control-label', for: 'inputEmail'
         .col-sm-10
           = f.email_field :email, autofocus: true,class: 'form-control', type: 'email', id: 'inputEmail'
+      .form-group
+        = f.label :avatar, class: 'col-sm-2 control-label', for: 'avatar'
+        .col-sm-10
+          = f.file_field :avatar, class: 'filestyle', id: 'avatar'
+          = f.hidden_field :avatar_cache
       .form-group
         = f.label :password, class: 'col-sm-2 control-label', for: 'inputPassword'
         .col-sm-10

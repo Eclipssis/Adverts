@@ -43,6 +43,13 @@ gem "cancan"
 
 gem 'kaminari'
 
+gem 'pg_search'
+
+gem 'paperclip'
+gem 'carrierwave'
+
+gem 'mini_magick'
+
 gem 'jquery-ui-rails'
 
 # Use ActiveModel has_secure_password

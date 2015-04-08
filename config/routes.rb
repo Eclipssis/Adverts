@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # resources :roles
   get '/profile/:id', to: 'user#show', as: 'user_profile'
 
+  # поиск
+  get 'results', to: 'results#index', as: 'results'
+
 
   namespace :admin do
     post  'roles',to: 'users#change', as: 'change_role'

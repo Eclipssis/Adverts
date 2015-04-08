@@ -14,6 +14,7 @@ class AdvertsController < ApplicationController
 
   def create
     @advert = current_user.adverts.create(advert_params)
+    @advert.author = current_user.login
     if @advert.save
       render 'notice'
     else

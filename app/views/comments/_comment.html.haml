@@ -2,8 +2,9 @@
   %p.comment-author.pull-left
     = comment.user.login
     %span :
+    - if can? :destroy, comment
+      = link_to('', comment, class: 'delete-comment pull-right', method: :delete, remote: true)
+    - if can? :update, comment
+      = link_to('', edit_comment_path(comment), class: 'edit-comment pull-right', remote: true)
   %p.comment-text= comment.text
-  - if can? :update, comment
-    = link_to('Редактировать', edit_comment_path(comment), class: 'pull-right', remote: true)
-  - if can? :destroy, comment
-    = link_to('Удалить', comment, class: 'delete-comment pull-right', method: :delete, remote: true)
+

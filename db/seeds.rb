@@ -32,7 +32,8 @@ user = User.create(
 user.skip_confirmation!
 user.save!
 
-10.times do |advert| user.adverts.create(title: "Заголовок #{advert + 1}-го Обьявления" , text: "Nullam tempor, eros at maximus commodo, tortor arcu viverra justo, a tincidunt ligula orci at metus. Suspendisse eu porta ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce semper non erat in rutrum. Nam vestibulum quis nisi sit amet lobortis. Donec est dui, aliquet sit amet lorem vel, varius viverra magna. Mauris eget commodo lacus. Ut quis risus massa.")
+10.times do |advert|
+  user.adverts.create(title: "Заголовок #{advert + 1}-го Обьявления" , text: "Nullam tempor, eros at maximus commodo, tortor arcu viverra justo, a tincidunt ligula orci at metus. Suspendisse eu porta ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce semper non erat in rutrum. Nam vestibulum quis nisi sit amet lobortis. Donec est dui, aliquet sit amet lorem vel, varius viverra magna. Mauris eget commodo lacus. Ut quis risus massa.")
   5.times { |comment| user.comments.create(text: "#{user.login} comment #{comment + 1}", advert_id: advert + 1) }
 end
 

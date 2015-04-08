@@ -32,6 +32,11 @@
       %br/
       = f.text_field :city, autocomplete: "off",class: 'form-control'
     .form-group
+      = f.label :avatar, class: 'col-sm-2 control-label', for: 'avatar'
+      %br/
+      = f.file_field :avatar, class: 'filestyle', id: 'avatar'
+      = f.hidden_field :avatar_cache
+    .form-group
       = f.label :password
       %i= t('.leave_blank_if_you_dont_want_to_change_it')
       %br/

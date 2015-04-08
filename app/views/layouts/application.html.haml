@@ -26,12 +26,9 @@
                 - else
                   %li.width
             = link_to(t('.add_advert'), new_advert_path, class: 'button btn btn-info navbar-btn')
-            %form.navbar-form.navbar-left{:role => "search"}
-              .form-group
-                = form_for( User.new , url: admin_change_role_path, html: { method: :post } ) do |f|
-                  = f.text_field :id , placeholder: "Search" , class: 'form-control input-sm'
-                  = f.select :role_id, ['Автор','еще что то'], {}, { class: 'form-control input-sm' }
-                  = f.submit t('.sent'), class: 'btn btn-sm btn-default'
+            = form_tag  results_path, method: :get, role: 'search', class: 'form navbar-form navbar-left' do
+              = text_field :query, params[:query], placeholder: "Search" , class: 'form-control input-sm'
+              = submit_tag t('.sent'), class: 'btn btn-sm btn-default'
             %ul.nav.navbar-nav.navbar-right
               - unless user_signed_in?
                 %li
@@ -49,7 +46,7 @@
                     %li
                       = link_to(t('.edit'), edit_user_registration_path )
                     %li
-                      %a{:href => "#"}= t('.something_else')
+                      %a{:href => "#"} Мои обьявления
                     %li.divider
                     %li
                       = link_to(t('.go_out'), destroy_user_session_path, :method => :delete)

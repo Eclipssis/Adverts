@@ -20,7 +20,6 @@
 
 //= require_tree .
 
-
 $( document ).ready(function() {
 
     $("#country").autocomplete({
@@ -37,8 +36,16 @@ $( document ).ready(function() {
         }
     });
 
-
-
+//    $('.comment').mouseover(
+//        function() {
+//            $('.edit-comment').css( "opacity", "1" );
+//            $('.delete-comment').css( "opacity", "1" );
+//    });
+//    $('.comment').mouseleave(
+//        function() {
+//            $('.edit-comment').css( "opacity", "0" );
+//            $('.delete-comment').css( "opacity", "0" );
+//    });
 });
 
 

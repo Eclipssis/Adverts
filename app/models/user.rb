@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   validates :login, :fio, :birthday, :city, :country, presence: true
 
+  mount_uploader :avatar, AvatarUploader
+
   has_many :adverts
   has_many :comments
   belongs_to :role

@@ -1,21 +1,21 @@
 %section.middle.container
   = render partial: "shared/breadcrumb", locals: {breadcrumb:  { "http://localhost:3000/" => "Главная", "http://localhost:3000/advert" => "Заголовок обьявления" }}
   .page-header
-    %h1.text-center
-      = @advert.title
-  .notice-profile.col-lg-3.col-md-2.col-sm-12.col-xs-12
-    %img{:src => "http://prettynews.ru/wp-content/uploads/2012/04/Vesna-150x150.jpg"}
+  .notice-profile.col-lg-3.col-md-4.col-sm-12.col-xs-12
+    = image_tag @advert.user.avatar_url
     %p.date-publication
       Дата публикации:
       %span= @advert.created_at.strftime("%d %b. %Y") #TODO Переделать в нормальный формат i18n
     %p.author
       Автор:
-      %span= @advert.user.fio
+      %span= @advert.user.login
     - if can? :update, @advert
       = link_to('Редактировать', edit_advert_path(@advert),class: "btn btn-info")
     - if can? :destroy, @advert
       = link_to('Удалить', advert_path(@advert.id), method: :delete, data: {confirm: 'Точно удалить?'},class: "btn btn-danger")
   .col-lg-8.col-md-8.col-sm-12.col-xs-12
+    %h1.text-center
+      = @advert.title
     .comments
       %p= @advert.text
       %p.comments-title Коментарии
