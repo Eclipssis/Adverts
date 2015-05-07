@@ -1,20 +1,14 @@
 class AdvertsController < ApplicationController
 
   load_and_authorize_resource
-  skip_load_resource :only => [:new, :create]
+  skip_load_resource :only => :create
 
   def new
-    if user_signed_in?
-      @advert = current_user.adverts.build
-    else
-      flash[:alert] = 'Вы не вошли в систему'
-      redirect_to root_url
-    end
+
   end
 
   def create
     @advert = current_user.adverts.create(advert_params)
-    @advert.author = current_user.login
     if @advert.save
       render 'notice'
     else
@@ -45,8 +39,8 @@ class AdvertsController < ApplicationController
 
   private
 
-  def advert_params
-    params.require(:advert).permit(:title, :text, :image)
-  end
+    def advert_params
+      params.require(:advert).permit(:title, :text, :image)
+    end
 
 end

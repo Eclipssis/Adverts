@@ -1,5 +1,6 @@
 .comment.clearfix{ id: "comment_id_#{comment.id}" }
-  %p.comment-author.pull-left
+  = image_tag comment.user.avatar_url, class: 'pull-left'
+  %p.comment-author
     = comment.user.login
     %span :
     - if can? :destroy, comment

@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20150329105338) do
   create_table "adverts", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.string   "author"
     t.string   "image"
     t.text     "text"
     t.datetime "created_at"
@@ -54,8 +53,7 @@ ActiveRecord::Schema.define(version: 20150329105338) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "city"
-    t.string   "country"
+    t.integer  "city_id"
     t.string   "login"
     t.string   "avatar"
     t.string   "fio"

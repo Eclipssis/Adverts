@@ -20,32 +20,22 @@
 
 //= require_tree .
 
-$( document ).ready(function() {
+$(document).on('ready page:load', function () {
 
     $("#country").autocomplete({
         source: '/countries/autocomplete',
-        minLength: 2,
         select: function( event, ui ) {
             $("#city-field").fadeIn(200);
             $("#city").autocomplete({
-                source: '/cities/' + ui.item.country_id + '/autocomplete'
+                source: '/cities/' + ui.item.country_id + '/autocomplete',
+                select: function( event, ui ) {
+                    $("#hidden_city_id").val(ui.item.city_id)
+                }
             });
-            console.log(event);
-            console.log(ui.item.label);
-            console.log(ui.item.value);
+
         }
     });
 
-//    $('.comment').mouseover(
-//        function() {
-//            $('.edit-comment').css( "opacity", "1" );
-//            $('.delete-comment').css( "opacity", "1" );
-//    });
-//    $('.comment').mouseleave(
-//        function() {
-//            $('.edit-comment').css( "opacity", "0" );
-//            $('.delete-comment').css( "opacity", "0" );
-//    });
 });
 
 

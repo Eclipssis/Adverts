@@ -3,7 +3,6 @@ class CreateAdverts < ActiveRecord::Migration
     create_table :adverts do |t|
       t.integer :user_id
       t.string :title
-      t.string :author
       t.string :image
       t.text :text
 

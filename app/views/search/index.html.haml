@@ -1,0 +1,10 @@
+%section.middle.container
+  .page-header
+    %h1.text-center Результаты поиска
+  .row
+  - if @search_results.empty?
+    %h3 Поиск не дал резутатов, попробуйте еще
+  .row
+    = render partial: "shared/adverts", collection: @search_results
+  .cleafix.paginate
+    = paginate @search_results, html: {class: 'cleafix'}

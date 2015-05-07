@@ -22,17 +22,16 @@ user = User.create(
     fio:                   "Some FIO",
     login:                 "Eclipssis",
     birthday:              "10.12.1992",
-    country:               "Ukraine",
-    city:                  "Sumy",
+    city_id:                1,
     email:                 "admin@yandex.ru",
     password:              "12345678",
     password_confirmation: "12345678"
 )
-
-user.skip_confirmation!
+user.role = Role.find_by_name(:admin)
+user.confirm!
 user.save!
 
-10.times do |advert|
+30.times do |advert|
   user.adverts.create(title: "Заголовок #{advert + 1}-го Обьявления" , text: "Nullam tempor, eros at maximus commodo, tortor arcu viverra justo, a tincidunt ligula orci at metus. Suspendisse eu porta ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce semper non erat in rutrum. Nam vestibulum quis nisi sit amet lobortis. Donec est dui, aliquet sit amet lorem vel, varius viverra magna. Mauris eget commodo lacus. Ut quis risus massa.")
   5.times { |comment| user.comments.create(text: "#{user.login} comment #{comment + 1}", advert_id: advert + 1) }
 end

@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
-  validates :login, :fio, :birthday, :city, :country, presence: true
+  validates :login, :fio, :birthday, :city, presence: true
 
   mount_uploader :avatar, AvatarUploader
 
   has_many :adverts
   has_many :comments
   belongs_to :role
+  belongs_to :city
   # Include default devise modules. Others available are:
   #  :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

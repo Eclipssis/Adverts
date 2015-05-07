@@ -1,0 +1,5 @@
+.col-lg-3.col-md-3.col-sm-4.col-xs-12
+  .advert
+    = image_tag adverts.user.try(:avatar_url) , class: 'pull-left'
+    = link_to( adverts.title, advert_path(adverts), class: 'title')
+    %p.description= truncate(adverts.text, :length => 110)

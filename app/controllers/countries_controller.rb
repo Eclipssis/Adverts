@@ -1,12 +1,8 @@
 class CountriesController < ApplicationController
 
-  def get_country
+  def autocomplete
     @country = Country.where("title ILIKE ?", "%#{params[:term]}%")
-    selected_country = @country.collect do |t|
-      { label: t.title, country_id: t.id }
-    end
-
-    render json: selected_country
+    render json: @country.map { |country| {label: country.title, country_id: country.id} }
   end
 
 end

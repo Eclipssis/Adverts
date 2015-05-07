@@ -1,14 +1,8 @@
 class CitiesController < ApplicationController
 
-  def get_city
+  def autocomplete
     @selected_country = Country.find(params[:id])
-
-    @city = @selected_country.cities.where("title ILIKE ?", "%#{params[:term]}%")
-    selected_city = @city.collect do |t|
-      { label: t.title }
-    end
-
-    render json: selected_city
+    render json: @selected_country.cities.where("title ILIKE ?", "%#{params[:term]}%").map { |city| {label: city.title , city_id: city.id} }
   end
 
 end
