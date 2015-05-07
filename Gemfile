@@ -45,10 +45,8 @@ gem 'kaminari'
 
 gem 'pg_search'
 
-gem 'paperclip'
+gem 'rmagick'
 gem 'carrierwave'
-
-gem 'mini_magick'
 
 gem 'jquery-ui-rails'
 

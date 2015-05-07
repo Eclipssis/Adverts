@@ -1,0 +1,6 @@
+- @all_adverts.each do |advert|
+  .col-lg-3.col-md-3.col-sm-4.col-xs-12
+    .advert
+      = image_tag advert.user.avatar_url , class: 'pull-left'
+      = link_to( advert.title, advert_path(advert), class: 'title')
+      %p.description= truncate(advert.text, :length => 110)

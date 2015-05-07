@@ -18,9 +18,9 @@
       = @advert.title
     .comments
       %p= @advert.text
-      %p.comments-title Коментарии
+      %p.comments-title Комментарии
       = render @advert.comments
-    %h3 Добавить коментарий
+    %h3 Добавить комментарий
     = form_for @advert.comments.build, remote: true, html: {class: "form-horizontal",role: 'form', autocomplete: "off"} do |f|
       = f.hidden_field :advert_id
       = f.text_area :text, autocomplete: "off",class: 'form-control yout-comment', type: 'text' , rows: '3'
