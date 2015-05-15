@@ -1,12 +1,12 @@
-var a = $("<%= j(render(:partial => "comments/update_comment",locals: { comment: @update_comment}))%>").appendTo("#comment_id_<%= @update_comment.id %> ");
-$("#comment_id_<%= @update_comment.id %> ").find(".comment-text").remove();
-$("#comment_id_<%= @update_comment.id %> a").remove();
+var a = $("<%= j(render(:partial => "comments/update_comment",locals: { comment: @comment}))%>").appendTo("#comment_id_<%= @comment.id %> ");
+$("#comment_id_<%= @comment.id %> ").find(".comment-text").remove();
+$("#comment_id_<%= @comment.id %> a").remove();
 
 
 
 $(".up").click(function(){
-    console.log( $("#comment_id_<%= @update_comment.id %> textarea").val() );
-    if ($("#comment_id_<%= @update_comment.id %> textarea").val() != "")
-    $("#comment_id_<%= @update_comment.id %> ").hide();
+    console.log( $("#comment_id_<%= @comment.id %> textarea").val() );
+    if ($("#comment_id_<%= @comment.id %> textarea").val() != "")
+    $("#comment_id_<%= @comment.id %> ").hide();
 });
 

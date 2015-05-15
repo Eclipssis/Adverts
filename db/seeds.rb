@@ -22,14 +22,13 @@ user = User.create(
     fio:                   "Some FIO",
     login:                 "Eclipssis",
     birthday:              "10.12.1992",
-    country:               "Ukraine",
-    city:                  "Sumy",
+    city_id:                1,
     email:                 "admin@yandex.ru",
     password:              "12345678",
     password_confirmation: "12345678"
 )
-
-user.skip_confirmation!
+user.role = Role.find_by_name(:admin)
+user.confirm!
 user.save!
 
 30.times do |advert|

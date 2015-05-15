@@ -1,31 +1,21 @@
 class Admin::UsersController < ApplicationController
 
+  load_and_authorize_resource
+
   def index
-    if current_user.admin?  # TODO переделать в CanCan
-      @roles = Role.all
-      @users = User.all
-    else
-      flash[:alert] = "404 У вас нет прав!"
-      redirect_to root_url
+    @roles = Role.all
+    @users = User.order(:role_id)
+  end
+
+  def update
+    @user.update_attributes(users_params)
+    redirect_to admin_users_url
+  end
+
+  private
+
+    def users_params
+      params.require(:user).permit(:role_id)
     end
-  end
-
-  def show
-    @user = User.find(params[:id])
-  end
-
-  def change
-    if current_user.admin?  # TODO переделать в CanCan
-      @user = User.find(params[:user][:id])
-      @role = Role.find(params[:user][:role_id])
-
-      @user.role = @role
-      @user.save
-      redirect_to admin_users_path
-    else
-      flash[:alert] = "404 У вас нет прав!"
-      redirect_to root_url
-    end
-  end
 
 end

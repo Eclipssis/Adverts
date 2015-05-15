@@ -9,15 +9,15 @@ Rails.application.routes.draw do
   get '/profile/:id', to: 'user#show', as: 'user_profile'
 
   # поиск
-  get 'results', to: 'results#index', as: 'results'
+  get 'search', to: 'search#index', as: 'search'
 
 
   namespace :admin do
-    post  'roles',to: 'users#change', as: 'change_role'
-    get 'users', to: 'users#index', as: 'users'
+    resources :users, only: [:index, :update]
   end
-  get 'countries/autocomplete', to: 'countries#get_country'
-  get '/cities/:id/autocomplete', to: 'cities#get_city'
+
+  get 'countries/autocomplete', to: 'countries#autocomplete'
+  get '/cities/:id/autocomplete', to: 'cities#autocomplete'
 
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.

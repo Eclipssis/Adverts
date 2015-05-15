@@ -37,16 +37,14 @@ class Ability
       can :read, :all
       can [:create, :update, :destroy], Advert
       can [:create, :update, :destroy], Comment
-    else
-      can :read, :all
+    elsif user.user?
+      can :read, [Advert,Comment]
       can :create, Advert
-      can [:update, :destroy], Advert do |advert|
-        advert.user == user
-      end
+      can([:update, :destroy], Advert) { |advert| advert.user == user }
       can :create, Comment
-      can [:update, :destroy], Comment do |comment|
-        comment.user == user
-      end
+      can([:update, :destroy], Comment) { |comment| comment.user == user }
+    else
+      can :read, [Advert,Comment]
     end
   end
 end

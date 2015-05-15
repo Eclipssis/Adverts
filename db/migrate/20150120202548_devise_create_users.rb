@@ -2,8 +2,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
 
-      t.string :city
-      t.string :country
+      t.integer :city_id
       t.string :login
       t.string :avatar
       t.string :fio

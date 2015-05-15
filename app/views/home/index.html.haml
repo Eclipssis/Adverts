@@ -3,6 +3,6 @@
     %h1.text-center
       = t('.adverts')
   .row
-    = render 'shared/adverts'
+    = render partial: "shared/adverts", locals: { adverts: @all_adverts }
   .cleafix.paginate
     = paginate @all_adverts, html: {class: 'cleafix'}

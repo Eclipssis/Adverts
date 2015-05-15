@@ -22,11 +22,11 @@
     %p
       = t("activerecord.models.city.one")
       %span
-        = @user.city
+        = @user.city.title
     %p
       = t("activerecord.models.country")
       %span
-        = @user.country
+        = @user.city.country.title
   .myAdverts.col-lg-12.col-md-12.col-sm-12.col-xs-12
     %h2= t('.my_adverts')
     - @user.adverts.each do |advert|
